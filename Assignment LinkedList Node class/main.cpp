@@ -217,7 +217,8 @@ main ()
     cout << endl << endl;
     l1.print ();
     cout << endl;
-    Node *nthNode = l1.getNthElement(2);  // If position is invalid then function return NULL value
+    Node *nthNode = l1.getNthElement(25);  // If position is invalid then function return NULL value
+    if(nthNode == NULL)
     {
         cout<<"invalid position";
     }
