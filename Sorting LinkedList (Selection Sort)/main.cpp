@@ -266,6 +266,32 @@ public:
             i++;
         }
     }
+
+    // Second method for sorting
+    void secondSort(){
+        Node *temp = head;
+        Node *temp2 = head;
+        int index1 = 0;
+        int index2 = 0;
+        while(temp!=NULL){
+            while(temp2!=NULL){
+                if(temp2->getData()<temp->getData()){
+                    swap(index1,index2);
+                    temp2 = temp2->getNext();
+                    index2++;
+                }
+                else{
+                    index2++;
+                    temp2 = temp2->getNext();
+                }
+            }
+            index1++;
+            index2 = index1;
+            temp = temp->getNext();
+            temp2 = temp;
+        }
+    }
+
 };
 
 int main()
