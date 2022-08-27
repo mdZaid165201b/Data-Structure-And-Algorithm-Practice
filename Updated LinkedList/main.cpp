@@ -202,10 +202,7 @@ public:
                     }
                 }
             }
-            else
-            {
-                return NULL;
-            }
+            return NULL;
         }
     }
     void reverseLinkedList()
@@ -349,7 +346,7 @@ int main()
     // l1.mergeLinkedList(l2);
 
     l1.copyLinkedList(l2);
-    cout<<"After Medged"<<endl;
+    cout<<"After Merge"<<endl;
     l1.print();
     // l2.insertAtLast(100);
     l2.insertAtLast(200);
