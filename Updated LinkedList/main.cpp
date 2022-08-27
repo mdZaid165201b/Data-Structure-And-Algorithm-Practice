@@ -323,6 +323,57 @@ public:
         }
 
     }
+    
+    // insert in sorted way
+    bool insertInSort(int val)
+    {
+        if(isEmpty())
+        {
+            insertAtLast(val);
+            return true;
+        }
+        else
+        {
+            if(head->getNext() == NULL)
+            {
+                if(val<head->getData())
+                {
+                    insertAtBegin(val);
+                }
+                else
+                {
+                    insertAtLast(val);
+                }
+            }
+            else
+            {
+                Node *temp = head;
+                if(val<head->getData())
+                {
+                    insertAtBegin(val);
+                    return true;
+                }
+                else
+                {
+                    while(temp->getNext() != NULL)
+                    {
+                        if(val>temp->getData() && val<temp->getNext()->getData())
+                        {
+                            Node *newNode = new Node(val);
+                            newNode->setNext(temp->getNext());
+                            temp->setNext(newNode);
+                            return true;
+                            break;
+                        }
+                        temp = temp->getNext();
+                    }
+                    Node *newNode = new Node(val);
+                    temp->setNext(newNode);
+                    return true;
+                }
+            }
+        }
+    }
 
 };
 
