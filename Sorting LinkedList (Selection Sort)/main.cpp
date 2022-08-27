@@ -4,9 +4,9 @@ using namespace std;
 
 class Node
 {
+public:
     Node * next;
     int data;
-public:
     Node ()
     {
         data = -1;
@@ -173,9 +173,10 @@ public:
         temp = head;
         while(temp != NULL)
         {
-            cout<<temp->getData()<<endl;
+            cout<<temp->getData() << "->";
             temp = temp->getNext();
         }
+        cout << "NULL\n";
     }
 
     Node *getElementFromIndex(int index)
@@ -291,19 +292,52 @@ public:
             temp2 = temp;
         }
     }
+    
+    void sortedInsert(int data){
+        Node *carry = NULL;
+        Node *t = head;
+        Node *NewNode = new Node();
+        NewNode->data = data;
+        NewNode->next = NULL;
+        while(t != NULL)
+        {
+            if (data >= t->data)
+            {
+                carry = t;
+            }
+            t = t->next;
+        }
+        if(head == NULL)
+        {
+            head = NewNode;
+        }
+        else if(carry == NULL)
+        {
+            NewNode->next = head;
+            head = NewNode;
+        }
+        else if (carry->next == NULL)
+        {
+            carry->next = NewNode;
+        }
+        else if(carry->next != NULL)
+        {
+            NewNode->next = carry->next;
+            carry->next = NewNode;
+        }
+        
+    }
+
 
 };
 
 int main()
 {
     LinkedList l1;
-    l1.insertAtLast(8);
-    l1.insertAtLast(5);
-    l1.insertAtLast(7);
-    l1.insertAtLast(1);
-    l1.print();
-    cout<<endl<<endl;
-    l1.sort();
+    l1.sortedInsert(8);
+    l1.sortedInsert(5);
+    l1.sortedInsert(7);
+    l1.sortedInsert(1);
     l1.print();
 
     return 0;
