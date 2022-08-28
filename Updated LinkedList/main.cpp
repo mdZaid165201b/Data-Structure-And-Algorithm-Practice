@@ -374,6 +374,23 @@ public:
             }
         }
     }
+    
+    void insertAtNthPosition(int value,int position){
+        Node *temp = head;
+        Node *prev = head;
+        if(isEmpty()) return;
+        else{
+            for(int i = 0;i<position;i++){
+                prev = temp;
+                temp =temp->getNext();
+            }
+            cout<<"prev Data ->"<<prev->getData()<<endl;
+            cout<<"curr Data ->"<<temp->getData()<<endl;
+            Node * newNode = new Node(value);
+            prev->setNext(newNode);
+            newNode->setNext(temp);
+        }
+    }
 
 };
 
