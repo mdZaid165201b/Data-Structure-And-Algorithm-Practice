@@ -391,6 +391,42 @@ public:
             newNode->setNext(temp);
         }
     }
+    
+    // remove Duplicates from LinkedList from Sorted Array method
+    void removeDuplicates(){
+        sort();
+        Node *temp = head;
+        Node *temp2 = temp->getNext();
+        while(temp!=NULL){
+            while(temp2!=NULL){
+                if(temp->getData() == temp2->getData()){
+                    Node *forDeleteNode = temp2;
+                    if(temp2->getNext() == NULL){
+                        // cout<<"forDeleteNode =>"<<forDeleteNode->getNext()<<endl;
+                        // cout<<"if part when temp2->getNext => NULL"<<endl;
+                        // cout<<"temp2->getData()"<<temp2->getData()<<endl;
+                        // cout<<"temp2->getNext()"<<temp2->getNext()<<endl;
+                        // cout<<"temp->getData()"<<temp->getData()<<endl;
+
+                        temp = NULL;
+                        temp2 = NULL;
+                        removeFromLast();
+                        break;
+                        
+                    }
+                    else{
+                        temp->setNext(temp2->getNext());
+                        temp2 = temp->getNext();
+                        delete forDeleteNode;
+                        forDeleteNode = NULL;
+                        continue;
+                    }
+                }
+                    temp = temp->getNext();
+                    temp2 = temp->getNext();
+            }
+        }
+    }
 
 };
 
