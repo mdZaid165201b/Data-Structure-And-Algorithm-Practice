@@ -444,6 +444,29 @@ public:
     Node* getMiddleNode(){
         return getMiddleNode(this->head);
     }
+    
+    /*---------Testing Swap Nodes------------*/
+    bool swapNodes(int index1,int index2){
+        Node* prev1;
+        Node* curr1;
+        Node* prev2;
+        Node* curr2;
+        curr1 = this->head;
+        for(int i = 0;i<index1;i++){
+            prev1 = curr1;
+            curr1= curr1->getNext();
+        }
+        for(int i = 0;i<index2;i++){
+            prev2 = curr2;
+            curr2 = curr2->getNext();
+        }
+        
+        cout<<"curr1 "<<curr1->getData()<<endl;
+        cout<<"prev1 "<<prev1->getData()<<endl;
+        cout<<"curr2 "<<curr2->getData()<<endl;
+        cout<<"prev2 "<<prev2->getData()<<endl;
+        
+    }
 
 };
 
