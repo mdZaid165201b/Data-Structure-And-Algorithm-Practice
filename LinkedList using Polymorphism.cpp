@@ -78,10 +78,41 @@ class SinglyLinkedList: public LinkedList{
             insertAtBegin(value);
         }
         else{
-            Node* newNode = new Node()
-            this->last->setNext()
+            Node* newNode = new Node(value);
+            this->last->setNext(newNode);
+            this->last = newNode;
+            this->length++;
         }
     }
+    
+    bool removeAtBegin(){
+        if(isEmpty()){ return false; }
+        else{
+            Node* temp = this->head;
+            this->head = this->head->getNext();
+            delete temp;
+            this->length--;
+            return true;
+        }
+    }
+    
+    bool removeAtLast(){
+        if(isEmpty()){ return false; }
+        else{
+            Node* temp = this->head;
+            while(temp->getNext()->getNext() != NULL){
+                temp = temp->getNext();
+            }
+            Node* temp2 = temp->getNext();
+            temp->setNext(NULL);
+            delete temp2;
+            this->length--;
+            return true;
+        }
+    }
+    
+    
+    
     
 };
 
@@ -91,6 +122,9 @@ int main()
     SinglyLinkedList s1;
     s1.insertAtBegin(5);
     s1.insertAtBegin(10);
+    s1.insertAtLast(15);
+    s1.print();
+    s1.removeAtLast();
     s1.print();
 
     return 0;
