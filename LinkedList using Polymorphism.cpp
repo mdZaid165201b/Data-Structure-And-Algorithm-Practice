@@ -140,16 +140,16 @@ class SinglyLinkedList: public LinkedList{
 
 int main()
 {
-    SinglyLinkedList s1;
-    s1.insertAtBegin(5);
-    s1.insertAtBegin(10);
-    s1.insertAtLast(15);
-    s1.print();
-    cout<<s1.getElementFromIndex(2)->getData()<<" From Index"<<endl;
-    s1.removeFromLast();
-    s1.print();
-    cout<<s1.getLastElement()->getData()<<endl;
-    cout<<s1.getFirstElement()->getData()<<endl;
+    LinkedList* s1 = new SinglyLinkedList;
+    s1->insertAtBegin(5);
+    s1->insertAtBegin(10);
+    s1->insertAtLast(15);
+    s1->print();
+    cout<<s1->getElementFromIndex(2)->getData()<<" From Index"<<endl;
+    s1->removeFromLast();
+    s1->print();
+    cout<<s1->getLastElement()->getData()<<endl;
+    cout<<s1->getFirstElement()->getData()<<endl;
 
     return 0;
 }
