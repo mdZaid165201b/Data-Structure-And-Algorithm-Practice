@@ -22,22 +22,29 @@ class Node{
     Node* getPrev() { return this->prev; }
 };
 
-class LinkedList(){
+class LinkedList{
+    protected:
     Node *head;
     Node *last;
     int length;
     public:
     LinkedList():head(NULL), last(NULL), length(0) {}
     
+    
+    
     int getLength(){ return length; }
     Node* getHead(){ return this->head; }
     
     
     
-    virtual void insertAtBegin(int value){
+    // virtual void insertAtBegin(int value) = 0;
+    // virtual void insertAtLast(int value) = 0;
+    // virtual void removeAtBegin() = 0;
+    // virtual void removeAtLast() = 0;
         
-    }
     
+    
+    bool isEmpty(){ return this->length == 0 ? true : false; }
     
     void print(Node* head){
         while(head != NULL){
@@ -46,19 +53,45 @@ class LinkedList(){
         }
         cout<<"NULL"<<endl;
     }
+    void print(){
+        print(this->head);
+    }
 };
 
 class SinglyLinkedList: public LinkedList{
     public:
+    void insertAtBegin(int value){
+        Node* newNode = new Node(value);
+        if(isEmpty()){
+            this->head = newNode;
+            this->last = newNode;
+        }
+        else{
+            newNode->setNext(this->head);
+            this->head = newNode;
+        }
+        this->length++;
+    }
+    
+    void insertAtLast(int value){
+        if(isEmpty()){
+            insertAtBegin(value);
+        }
+        else{
+            Node* newNode = new Node()
+            this->last->setNext()
+        }
+    }
     
 };
 
 
 int main()
 {
-    Node n1;
-    n1.setData(5);
-    cout<<n1.getNext();
+    SinglyLinkedList s1;
+    s1.insertAtBegin(5);
+    s1.insertAtBegin(10);
+    s1.print();
 
     return 0;
 }
