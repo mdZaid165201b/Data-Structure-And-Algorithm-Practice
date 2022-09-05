@@ -37,10 +37,13 @@ class LinkedList{
     
     
     
-    // virtual void insertAtBegin(int value) = 0;
-    // virtual void insertAtLast(int value) = 0;
-    // virtual void removeAtBegin() = 0;
-    // virtual void removeAtLast() = 0;
+    virtual void insertAtBegin(int value) = 0;
+    virtual void insertAtLast(int value) = 0;
+    virtual bool removeFromBegin() = 0;
+    virtual bool removeFromLast() = 0;
+    virtual Node* getFirstElement() = 0;
+    virtual Node* getLastElement() = 0;
+    virtual Node* getElementFromIndex(int index) = 0;
         
     
     
@@ -57,6 +60,7 @@ class LinkedList{
         print(this->head);
     }
 };
+
 
 class SinglyLinkedList: public LinkedList{
     public:
@@ -85,7 +89,7 @@ class SinglyLinkedList: public LinkedList{
         }
     }
     
-    bool removeAtBegin(){
+    bool removeFromBegin(){
         if(isEmpty()){ return false; }
         else{
             Node* temp = this->head;
@@ -96,7 +100,7 @@ class SinglyLinkedList: public LinkedList{
         }
     }
     
-    bool removeAtLast(){
+    bool removeFromLast(){
         if(isEmpty()){ return false; }
         else{
             Node* temp = this->head;
@@ -105,14 +109,31 @@ class SinglyLinkedList: public LinkedList{
             }
             Node* temp2 = temp->getNext();
             temp->setNext(NULL);
+            this->last = temp;
             delete temp2;
             this->length--;
             return true;
         }
     }
     
+    Node* getFirstElement(){ return this->head; }
+    Node* getLastElement(){ return this->last; }
     
     
+    Node* getElementFromIndex(int index){
+        if(index >= 0 && index < this->getLength()){
+            if(index == 0){ return this->head; }
+            else if(index == this->getLength()-1){ return this->last; }
+            else{
+                Node* temp = this->head;
+                for(int i = 0; i < this->getLength(); i++ ){
+                    if(i == index){ return temp; }
+                    else{ temp = temp->getNext(); }
+                }
+            }
+        }
+        return NULL;
+    }
     
 };
 
@@ -124,8 +145,11 @@ int main()
     s1.insertAtBegin(10);
     s1.insertAtLast(15);
     s1.print();
-    s1.removeAtLast();
+    cout<<s1.getElementFromIndex(2)->getData()<<" From Index"<<endl;
+    s1.removeFromLast();
     s1.print();
+    cout<<s1.getLastElement()->getData()<<endl;
+    cout<<s1.getFirstElement()->getData()<<endl;
 
     return 0;
 }
