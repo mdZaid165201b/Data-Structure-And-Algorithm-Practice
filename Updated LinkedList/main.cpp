@@ -445,27 +445,42 @@ public:
         return getMiddleNode(this->head);
     }
     
-    /*---------Testing Swap Nodes------------*/
-    bool swapNodes(int index1,int index2){
+    /*--------- 2013 Swap Nodes------------*/
+    void swapNodes(int index1,int index2){
         Node* prev1;
         Node* curr1;
         Node* prev2;
         Node* curr2;
         curr1 = this->head;
-        for(int i = 0;i<index1;i++){
-            prev1 = curr1;
-            curr1= curr1->getNext();
-        }
-        for(int i = 0;i<index2;i++){
+        curr2 = this->head;
+        Node* forHead = NULL;
+        for(int i = 1;i<=index2;i++){
             prev2 = curr2;
             curr2 = curr2->getNext();
         }
         
-        cout<<"curr1 "<<curr1->getData()<<endl;
-        cout<<"prev1 "<<prev1->getData()<<endl;
-        cout<<"curr2 "<<curr2->getData()<<endl;
-        cout<<"prev2 "<<prev2->getData()<<endl;
-        
+        if(index1 == 1){
+            prev1 = NULL;
+            Node* temp = curr1;
+            forHead = curr2;
+            prev1 = curr2->getNext();
+            curr2->setNext(curr1->getNext());
+            curr1->setNext(prev1);
+            prev2->setNext(curr1);
+            this->head = forHead;
+            return;
+        }
+        else{
+            for(int i = 1;i<=index1;i++){
+                prev1 = curr1;
+                curr1= curr1->getNext();
+            }
+            Node *temp = curr1->getNext();
+            curr1->setNext(curr2->getNext());
+            prev2->setNext(curr1);
+            prev1->setNext(curr2);
+            curr2->setNext(temp);
+        }
     }
 
 };
