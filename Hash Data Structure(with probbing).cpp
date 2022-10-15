@@ -47,3 +47,15 @@ class Hash{
     }
     
 };
+
+int main()
+{
+    Hash h1;
+    h1.insert(5);
+    h1.insert(10);
+    h1.insert(15);
+    h1.insert(20);
+    h1.print();
+
+    return 0;
+}
