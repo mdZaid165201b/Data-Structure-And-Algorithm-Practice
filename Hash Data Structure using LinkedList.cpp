@@ -48,6 +48,7 @@ class LinkedList{
         else if(head->getData() == val){
             if(head->getNext() != NULL){
                 Node *temp = head->getNext();
+                delete(head);
                 this->head = temp;\
             }
             else{
@@ -115,3 +116,15 @@ class Hash{
     
     
 };
+
+int main()
+{
+    Hash h1(20);
+    h1.insert(10);
+    h1.insert(100);
+    h1.display();
+    h1.deleteVal(50);
+    h1.display();
+    
+    return 0;
+}
