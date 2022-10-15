@@ -2,23 +2,24 @@
 
 using namespace std;
 
+const int size = 10;
 class Hash{
-    int arr[10];
+    int arr[size];
     public:
     Hash(){
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < size; i++){
             arr[i] = -1;
         }
     }
     void print(){
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < size; i++){
             if(arr[i] != -1){ cout<<arr[i]<<" "; }
         }
         cout<<endl;
     }
     
     int hashFunction(int key){
-        return key % 10;
+        return key % size;
     }
     
     void insert(int val){
@@ -28,7 +29,7 @@ class Hash{
         }
         else{
             int i = index;
-            while(i < 10){
+            while(i < size){
                 if(arr[i] == -1){
                     arr[i] = val;
                     return;
