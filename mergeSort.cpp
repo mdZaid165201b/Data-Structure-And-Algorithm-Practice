@@ -1,5 +1,14 @@
 
 
+void mergeSort(int arr[], int left, int right){
+    if(left < right){
+        int middle = (left + right) / 2;
+        mergeSort(arr,left,middle);
+        mergeSort(arr,middle + 1,right);
+        merge(arr,left, middle, right);
+    }
+}
+
 void print(int arr[], int len){
     for(int i = 0; i < len; i++){ cout<<arr[i]<<" "; }
 }
