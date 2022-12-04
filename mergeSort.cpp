@@ -1,4 +1,8 @@
 
+#include <iostream>
+
+using namespace std;
+
 
 void merge(int arr[],int left, int middle, int right){
     int tempArray[right] = {-1};
